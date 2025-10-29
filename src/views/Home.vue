@@ -1,8 +1,7 @@
 <template>
     <div class="card bg-base-100 w-96 shadow-sm mb-20 border-2 mx-auto mt-20">
         <figure>
-            <img src="../assets/gas.gif"
-                alt="fantominus gif" srcset="">
+            <img src="../assets/gas.gif" alt="fantominus gif" srcset="">
         </figure>
         <div class="card-body">
             <h2 class="card-title">Rival <img src="../assets/coeur.png" alt="" srcset=""></h2>
@@ -11,8 +10,7 @@
     </div>
     <div class="card bg-base-100 w-96 shadow-sm mb-20 border-2 mx-auto">
         <figure>
-            <img src="../assets/pika.gif"
-                alt="" srcset="">
+            <img src="../assets/pika.gif" alt="" srcset="">
         </figure>
         <div class="card-body">
             <h2 class="card-title">Player <img src="../assets/coeur.png" alt="" srcset=""></h2>
@@ -28,6 +26,21 @@
             <button @click="" class="btn btn-success">Abandonner</button>
         </div>
     </div>
+    <div class="border-black border-solid w-full text-center bg-blue-500 h-100 border-8 hover:bg-blue-700 ">
+        <h1>Battlelog</h1>
+        <div>
+            <h3>Liste des actions de combat :</h3>
+            <ul>
+                <li v-for="(oneTask, index) in tasks" :key="index" class="badge badge-outline mb-2 bg-red-500">
+                    `{{ player }}+""+{{ action }}+""+{{ result }}`
+                </li>
+            </ul>
+            <p v-if="tasks.length === 0" class="alert alert-warning mt-3">
+                Le combat n'a pas commencé
+            </p>
+            <button class="btn btn-primary mt-3" @click="addTask">Attaque</button>
+        </div>
+    </div>
 </template>
 
 <script setup lang='js'>
@@ -36,6 +49,13 @@ const currentround = ref(1);
 const cooldown = ref(0);
 const pvPlayer = ref("100");
 const pvAdversaire = ref("100");
+const typeAttack = ref("");
+const nbAttack = ref(0);
+const tasks = ref([]);
+
+function addTask() {
+    tasks.value.push(`Tâche ${tasks.value.length + 1}`);
+}
 
 function degatRandom() {
     return Math.random() * (25 - 1) + 1;
@@ -59,7 +79,7 @@ function specialAttackAdversaire() {
 }
 
 function soin() {
-    pvPlayer.value += (degatRandom()*1.5);
+    pvPlayer.value += (degatRandom() * 1.5);
     if (pvPlayer.value > 100) {
         pvPlayer.value = 100
     }
