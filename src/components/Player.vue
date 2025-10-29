@@ -22,6 +22,7 @@
 </template>
 
 <script setup lang='js'>
+import Attack from './Attack.vue';
 import { ref } from 'vue';
 const playerHealth = ref("100");
 const rivalHealth = ref("100");
