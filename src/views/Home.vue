@@ -36,6 +36,8 @@ const currentround = ref(1);
 const cooldown = ref(0);
 const pvPlayer = ref("100");
 const pvAdversaire = ref("100");
+const typeAttack = ref("");
+const nbAttack = ref(0);
 
 function degatRandom() {
     return Math.random() * (25 - 1) + 1;
