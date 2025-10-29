@@ -15,3 +15,4 @@ import Battlelog from './components/Battlelog.vue'
 
 <style scoped>
 </style>
+
