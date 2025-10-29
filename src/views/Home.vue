@@ -6,7 +6,7 @@
         </figure>
         <div class="card-body">
             <h2 class="card-title">Rival <img src="../assets/coeur.png" alt="" srcset=""></h2>
-            <progress class="progress w-85" value="100" max="100"></progress>
+            <progress class="progress w-85" :value=pvAdversaire max="100"></progress>
         </div>
     </div>
     <div class="card bg-base-100 w-96 shadow-sm mb-20 border-2 mx-auto">
@@ -16,7 +16,7 @@
         </figure>
         <div class="card-body">
             <h2 class="card-title">Player <img src="../assets/coeur.png" alt="" srcset=""></h2>
-            <progress class="progress w-85" value="100" max="100"></progress>
+            <progress class="progress w-85" :value=pvPlayer max="100"></progress>
         </div>
     </div>
     <div class="card w-96 bg-base-100 card-lg shadow-sm mx-auto">
@@ -32,12 +32,10 @@
 
 <script setup lang='js'>
 import { ref } from 'vue';
-const playerHealth = ref("100");
-const rivalHealth = ref("100");
 const currentround = ref(1);
 const cooldown = ref(0);
-const pvPlayer = ref(100);
-const pvAdversaire = ref(100);
+const pvPlayer = ref("100");
+const pvAdversaire = ref("100");
 
 function degatRandom() {
     return Math.random() * (25 - 1) + 1;
